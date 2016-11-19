@@ -1,3 +1,4 @@
+
 const express=require('express');
 var mongoose=require('mongoose');
 mongoose.connect('mongodb://localhost')
@@ -67,5 +68,4 @@ app.get("/members",(req,res)=>{
 app.get('/firstRoomMembers',(req,res)=>{
     res.send(roomList[0].members)
 })
-
 app.listen(3002);
