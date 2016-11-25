@@ -36,6 +36,7 @@ var app=express();
 
 app.get('/rooms',(req,res)=>{
     Room.find('',(err,rooms)=>{
+        var roomArray = [];
         for(var i=0;i<rooms.length;i++){
             var temp={}
             temp.meal=rooms[i].meal;
@@ -44,9 +45,11 @@ app.get('/rooms',(req,res)=>{
             for(var j=0;j<rooms[i].members.length;j++) {
                 temp.count++;
             }
-            res.write(JSON.stringify(temp))
+            roomArray.push(temp)
+            // console.log(temp);
         }
-        res.end();
+        console.log(roomArray);
+        res.json(roomArray);
     })
 })
 app.get("/members",(req,res)=>{
